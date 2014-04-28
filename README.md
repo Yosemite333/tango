@@ -1,0 +1,4 @@
+denemeler
+=========
+
+basit kod denemeleri
