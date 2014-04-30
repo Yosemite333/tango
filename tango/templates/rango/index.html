@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{block.super}} | index.html sayfası{% endblock %}
+
+{% block maincontent %}
+    <h3>Ana Sayfa</h3>
+    <p><a href='/rango/about/'>Hakkımızda</a> sayfasına ulaşabilirsiniz.</p>
+    <p><img src='{% static "pics/rango.jpg" %}' width='600px' alt='Picture of Rango' /></p>
+{% endblock %}
