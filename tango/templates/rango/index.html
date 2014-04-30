@@ -2,10 +2,20 @@
 
 {% load static %}
 
-{% block title %}{{block.super}} | index.html sayfası{% endblock %}
+{% block title %}{{block.super}} | Başlangıç Sayfası{% endblock %}
+# burada bir değişiklik yapıyorum.
 
 {% block maincontent %}
     <h3>Ana Sayfa</h3>
+    {% if categories %}
+        <h4>Kategori Listesi</h4>
+        <ul>
+            {% for category in categories %}
+            <li><a href="/rango/category/{{ category.url }}">{{category.name}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p><strong>Listelenecek herhangi bir categori yok.</strong></p>
+    {% endif %}
     <p><a href='/rango/about/'>Hakkımızda</a> sayfasına ulaşabilirsiniz.</p>
-    <p><img src='{% static "pics/rango.jpg" %}' width='600px' alt='Picture of Rango' /></p>
 {% endblock %}

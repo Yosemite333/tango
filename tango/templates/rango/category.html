@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ block.super }} | Kategori Sayfası{% endblock %}
+
+{% block maincontent %}
+    <h3>{{ category_name }}</h3>
+    {% if category %}
+        {% if pages %}
+            <ul>
+                {% for page in pages %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Bu kategori içerisinde herhangi bir sayfa yok.</p>
+        {% endif %}
+    {% else %}
+        <p>{{ category_name }} isimli bir kategori yok.</p>
+    {% endif %}
+
+    <p><a href='/rango/'>Ana Sayfa</a></p>
+    <p><a href='/rango/about/'>Hakkımızda</a></p>
+{% endblock %}
