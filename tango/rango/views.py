@@ -34,15 +34,26 @@ def category(request, category_name_url):
     return render_to_response('rango/category.html', context_dict, context)
 
 def add_category(request):
+    # İstemden bağlamı alıyor
     context = RequestContext(request)
+    # method post olduğu durumda veriyi forma bağlıyor
     if request.method == 'POST':
         form = CategoryForm(request.POST)
+        # gelen verinin geçerlilik sınamasını yapıyor
         if form.is_valid():
+            # geçerli veriyi veritabanına kaydediyor ve 
+            # index() işlevini, request nesnesini teslim 
+            # ederek çalıştırıyor. 
             form.save(commit = True)
             return index(request)
         else:
+            # form geçerlilik testi sonunda hatalar çıkarsa 
+            # hataları konsola yazdırıyor. 
             print form.errors
     else:
+        # request yönteminin post olmadığı durumlarda 
+        # CategoryForm nesnesi bağlı olmayan bir form 
+        # örneği olarak oluşturuluyor. 
         form = CategoryForm()
     return render_to_response('rango/add_category.html', {'form': form}, context)
 

@@ -8,17 +8,13 @@
     <h3>Kategori Ekleyin</h3>
     <form id = 'category_form' method = 'post' action = '/rango/add_category/'>
         {% csrf_token %}
-
         {% for hidden in form.hidden_fields %}
             <p>{{ hidden }}</p>
         {% endfor %}
-
         {% for field in form.visible_fields %}
             <p>{{ field.errors }}</p>
-            <p>{{ field.help_text }}</p>
-            <p>{{ field }}</p>
+            <p>{{ field }} {{ field.help_text }}</p>
         {% endfor %}
-
         <input type = 'submit' name = 'submit' value = 'Kategori Oluştur' />
     </form>
 {% endblock maincontent %}
